@@ -3,10 +3,12 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-
 <link rel="stylesheet" type="text/css" href="cart.css">
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+  Stripe.setPublishableKey('pk_test_8dIUQWEC1B3KtGDIF3Cd4XKO1');
+</script>
 
 </head>
 
@@ -67,14 +69,16 @@
 			
 				<div class="row"> 
 					<div class="column">
-						<div class="stripe-card">
-							<h2>Card</h2>
-							<div class='card-wrapper'></div>
-							<p><input placeholder="Card Number" oninput="this.className = '' " name="number" id="number"></p>
-							<p><input placeholder="Full Name" oninput="this.className = '' " name="name" id="name"></p>
-							<p><input placeholder="Expiry" oninput="this.className = '' " name="expiry" id="expiry"></p>
-							<p><input placeholder="CVC" oninput="this.className = '' " name="cvc" id="cvc"></p>
-						</div>
+						<script
+						    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+						    data-key="pk_test_ucBHwpQYDuTOYNuZC44QddvF"
+						    data-amount="999"
+						    data-name="GetPaid"
+						    data-description="Card Payment"
+						    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+						    data-locale="auto"
+						    data-billing-address=true>
+  						</script>
 					</div>
 			
 			<div class="column">
@@ -113,7 +117,8 @@
 
 	</form>
 </body>
-<script src="card/dist/card.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="cart.js"></script>
+
 </html>
 
-<script src="cart.js"></script>
