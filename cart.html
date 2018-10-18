@@ -3,17 +3,20 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<!-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+ --><!-- <script type="text/javascript">
+  Stripe.setPublishableKey('pk_test_8dIUQWEC1B3KtGDIF3Cd4XKO1');
+</script> -->
 <link rel="stylesheet" type="text/css" href="cart.css">
 
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript">
-  Stripe.setPublishableKey('pk_test_8dIUQWEC1B3KtGDIF3Cd4XKO1');
-</script>
 
 </head>
 
 <body>
-	<form id="getPaidForm" action="cartaction.php">
+	<form id="getPaidForm" action="#">
 		<div class="tab">Cart Content
 			<table>
 				<tr>
@@ -25,11 +28,13 @@
 				</tr>
 
 				<tr>
-					<td>Item 1</td>
-					<td><input type="number" value="1" min="1" class="quantity"></td>
-					<th>12.99</th>
-					<th><div class="product-line-price">12.99</div></th>
-					<th><button class="remove-product">Remove</button></th>
+					<div class="product" id="prod1">
+						<td>Item 1</td>
+						<td><div class="product-quantity"><input type="number" value="1" min="1" class="quantity"></div></td>
+						<th>12.99</th>
+						<th><div class="product-line-price">12.99</div></th>
+						<th><div class="product-removal" id="productRemoval"><button class="remove-product">Remove</button></div></th>
+					</div>
 				</tr>
 			</table>
 			<div class="totals">
@@ -83,7 +88,7 @@
 			
 			<div class="column">
 				<div class="mpesa">
-					<h2 class="mpesa-heading">Mpesa</h2>
+					<button id="pay-with-mpesa">Mpesa</button>
 				</div>
 			</div>
 		</div>
@@ -117,8 +122,7 @@
 
 	</form>
 </body>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="cart.js"></script>
-
+ 
 </html>
-
+ <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="cart.js"></script>

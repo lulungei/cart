@@ -72,16 +72,30 @@ function fixStepIndicator(n) {
 }
 
 
-var stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+// var stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
-//token is created using checkout or elements;
-//get the payment token ID submitted by the form;
+// //token is created using checkout or elements;
+// //get the payment token ID submitted by the form;
 
-const token = request.body.stripeToken; //usin express
+// const token = request.body.stripeToken; //usin express
 
-const charge = stripe.charges.create({
-  amount:999,
-  currency:'usd',
-  description : 'Example charge',
-  source: token
-})
+// const charge = stripe.charges.create({
+//   amount:999,
+//   currency:'usd',
+//   description : 'Example charge',
+//   source: token
+// })
+
+
+/* Set rates + misc */
+var taxRate = 0.05;
+var shippingRate = 15.00; 
+var fadeTime = 300;
+
+
+/*remove item*/
+
+function removeElement(productRemoval) {
+  var element = document.getElementById(prod1);
+  element.parentNode.removeChild()
+}
