@@ -65,6 +65,7 @@ button {
   font-size: 17px;
   font-family: Raleway;
   cursor: pointer;
+
 }
 
 button:hover {
@@ -74,6 +75,10 @@ button:hover {
 #prevBtn {
   background-color: #bbbbbb;
 }
+
+
+
+
 
 /* Make circles that indicate the steps of the form: */
 .step {
@@ -118,7 +123,7 @@ button:hover {
 	align: center;
 }
 
-.remove-product {
+.removeProduct {
 	border:0;
 	padding: 4px 8px;
 	background-color: #c66;
@@ -136,31 +141,29 @@ button:hover {
 	background-color: #a44;
 }
 
-.totals {
-  .totals-item {
-    float: right;
-    clear: both;
-    width: 100%;
-    margin-bottom: 10px;
-    
-    label {
-      float: left;
-      clear: both;
-      width: 79%;
-      text-align: right;
-    }
-    
-    .totals-value {
-      float: right;
-      width: 21%;
-      text-align: right;
-    }
-  }
-  
-  .totals-item-total {
-    font-family: $font-bold;
-  }
+.totals .totals-item {
+  float: right;
+  width: 90%;
+  margin: bottom;
 }
- 
 
-	
+.totals .totals-item label {
+  float:left;
+  clear:both;
+  width:79%;
+  text-align:right;
+	}
+
+  .totals .totals-item .totals-value {
+    float: right;
+    width:21%;
+    text-align: right;
+  }
+
+  .totals .totals-item-total {
+    font-family : "HelveticaNeue-Medium", "Helvetica Neue Medium";
+  }
+
+
+
+
