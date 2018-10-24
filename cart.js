@@ -93,16 +93,15 @@ var shippingRate = 15.00;
 var fadeTime = 300;
 
 
-/*remove item*/
-
-$(document).on('click', 'button.removeProduct', function(){
-  $(this).closest('tr').remove();
-  return false;
-});
-
-$('.product-quantity input').change(function() {
+/* Assign actions */
+$('.product-quantity input').change( function() {
   updateQuantity(this);
 });
+
+$('.product-removal button').click( function() {
+  removeItem(this);
+});
+
 
 /* Recalculate cart */
 function recalculateCart()
@@ -139,7 +138,7 @@ function recalculateCart()
 function updateQuantity(quantityInput)
 {
   /* Calculate line price */
-  var productRow = $(quantityInput).parent().parent();
+  var productRow = $(quantityInput).parent().parent().parent();
   var price = parseFloat(productRow.children('.product-price').text());
   var quantity = $(quantityInput).val();
   var linePrice = price * quantity;
@@ -153,3 +152,19 @@ function updateQuantity(quantityInput)
     });
   });  
 }
+
+
+/* Remove item from cart */
+function removeItem(removeButton)
+{
+  /* Remove row from DOM and recalc cart total */
+  var productRow = $(removeButton).parent().parent().parent();
+  productRow.slideUp(fadeTime, function() {
+    productRow.remove();
+    recalculateCart();
+  });
+}
+
+
+
+

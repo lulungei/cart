@@ -6,6 +6,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
+
+
 <!-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
  --><!-- <script type="text/javascript">
   Stripe.setPublishableKey('pk_test_8dIUQWEC1B3KtGDIF3Cd4XKO1');
@@ -30,10 +32,22 @@
 				<tr>
 					<div class="product" id="prod1">
 						<td>Item 1</td>
-						<td><div class="product-quantity"><input type="number" value="1" min="1" class="quantity" id="quantity"></div></td>
-						<td id="unitPrice">12.99</td>
-						<td><div class="product-line-price" id="linePrice">12.99</div></td>
-						<td><div class="product-removal" id="productRemoval"><button class="removeProduct">Remove</button></div></td>
+						<td>
+							<div class="product-quantity">
+								<input type="number" value="1" min="1" id="quantity">
+							</div>
+						</td>
+						<td>
+							<div class="product-price" id="productPrice">12.99</div>
+						</td>
+						<td>
+							<div class="product-line-price" id="linePrice">12.99</div>
+						</td>
+						<td>
+							<div class="product-removal" id="productRemoval">
+								<button class="removeProduct">Remove</button>
+							</div>
+						</td>
 					</div>
 				</tr>
 			
@@ -41,31 +55,43 @@
 				<tr>
 					<div class="product" id="prod1">
 						<td>Item 2</td>
-						<td><div class="product-quantity"><input type="number" value="1" min="1" class="quantity" id="quantity"></div></td>
-						<td id="unitPrice">12.99</td>
-						<td><div class="product-line-price" id="linePrice">12.99</div></td>
-						<td><div class="product-removal" id="productRemoval"><button class="removeProduct">Remove</button></div></td>
+						<td>
+							<div class="product-quantity">
+								<input type="number" value="1" min="1" id="quantity">
+							</div>
+						</td>
+						<td>
+							<div class="product-price" id="productPrice">12.99</div>
+						</td>
+						<td>
+							<div class="product-line-price" id="linePrice">12.99</div>
+						</td>
+						<td>
+							<div class="product-removal" id="productRemoval">
+								<button class="removeProduct">Remove</button>
+							</div>
+						</td>
 
 					</div>
 				</tr>
 			</table>
 			<div class="totals">
-				<div class="totals-item">
+				<div class='totals-item'>
 					<label>SubTotal</label>
-					<div class="totals-value" id="cart-subtotal">71.97</div>
+					<div class='totals-value' id='cart-subtotal'>71.97</div>
 				</div>
-				<div class="totals-item">
+				<div class='totals-item'>
 					<label>Tax (5%)</label>
-					<div class="totals-value" id="cart-tax">3.60</div>
+					<div class='totals-value' id='cart-tax'>3.60</div>
 				</div>
-				<div class="totals-item">
+				<div class='totals-item'>
 					<label>Shipping</label>
-					<div class="totals-value" id="cart-shipping">15.00</div>
+					<div class='totals-value' id='cart-shipping'>15.00</div>
 				</div>
 
-				<div class="totals-item totals-item-total">
+				<div class='totals-item totals-item-total'>
 					<label>Grand Total</label>
-					<div class="totals-value" id="cart-total">90.57</div>
+					<div class='totals-value' id='cart-total'>90.57</div>
 				</div>
 			</div>
 		</div>
@@ -79,6 +105,8 @@
 				</div>
 				<div class="column">
 					<h2>Location</h2>
+						<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-8GUlwczWDOb_BqzjbQ_QvnQIKZcnj0g&libraries=places">
+                    	</script>
 				</div>
 			</div>
 		</div>
