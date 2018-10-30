@@ -165,6 +165,135 @@ function removeItem(removeButton)
   });
 }
 
+//Maps js code
 
+//This example requires thre Places library. Include the ;ibraries=places parameter when you first load the API.
+//For example: <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries:">
 
+//this function loads the map
 
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -33.8688, lng: 151.2195 },
+    zoom: 13
+  });
+
+  var card = document.getElementById('pac-card');
+  var input = document.getElementById('pac-input');
+  var types = document.getElementById('type-selector');
+  var strictBounds = document.getElementById('strict-bounds-selector');
+
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+
+  var autocomplete = new google.maps.places.Autocomplete(input);
+
+  // Bind the map's bounds (viewport) property to the autocomplete object, so that the autocomplete requests 
+  //use the current map bounds for the bounds option in the request.
+
+  autocomplete.bindTo('bounds', map);
+
+  // Set the data fields to return when the user select a place.
+  autocomplete.setFields(
+    ['address_components', 'geometry', 'icon', 'name']);
+
+  var infowindow = new google.maps.InfoWindow();
+  var infowindowContent = document.getElementById('infowindow-content');
+  infowindow.setContent(infowindowContent);
+  var marker = new google.maps.Marker({
+    map:map,
+    anchorPoint:new google.maps.Point(0, -29)
+  });
+
+  autocomplete.addListener('place-changed', function(){
+    infowindow.close();
+    marker.setVisible(false);
+    var place = autocomplete.getPlace();
+    if (!olace.geometry) {
+      //user entered the name of a place that was not suggested and pressed the enter key, or the place details req failed
+    
+      window.alert("No details available for input: '" +place.name + "'" );
+      return;
+    }
+
+    //If the place has a geometry then present it on the map
+
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(17);
+    }
+    marker.setPosition(place.geometry.location);
+    marker.setVisible(true);
+
+     var address = '';
+      if (place.address_components) {
+        address = [
+          (place.address_components[0] && place.address_components[0].short_name || ''),
+          (place.address_components[1] && place.address_components[1].short_name || ''),
+          (place.address_components[2] && place.address_components[2].short_name || '')
+        ].join(' ');
+          }
+
+          infowindowContent.children['place-icon'].src = place.icon;
+          infowindowContent.children['place-name'].textContent = place.name;
+          infowindowContent.children['place-address'].textContent = address;
+          infowindow.open(map, marker);
+  });
+
+}
+
+//Get mpesa modal
+
+var modal = document.getElementById("mpesaModal");
+
+//Get the button that opens the modal
+var btn = document.getElementById("pay-with-mpesa");
+
+//get the span element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+//open modal when user clicks the button
+
+btn.onclick = function() {
+  modal.style.display="block";
+}
+
+//close modal when (x) is clicked or when outside the modal is clicked
+
+span.onclick = function(){
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+var handler = StripeCheckout.configure({
+  key: 'pk_test_TYooMQauvdEDq54NiTphI7jx',
+  image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+  locale: 'auto',
+  token: function(token) {
+    // You can access the token ID with `token.id`.
+    // Get the token ID to your server-side code for use.
+  }
+});
+
+document.getElementById("pay-with-card").addEventListener('click',function(e){
+  //Open Checkout with further options:
+
+  handler.open({
+    name: 'GetPaid',
+    description: 'Card payment',
+    zipCode: true,
+    amount: 2000
+  });
+  e.preventDefault();
+});
+
+//Close checkout on page navigation
+window.addEventListener('popstate', function(){
+  handler.close();
+});
